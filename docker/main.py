@@ -5,9 +5,9 @@ from pyrogram import Client, filters, types, enums
 from downloader import download_and_upload_video
 
 # Initialize the Pyrogram client
-api_id =  os.environ.get("APP_ID") # Replace with your actual api_id
-api_hash = os.environ.get("APP_HASH")  # Replace with your actual api_hash
-bot_token = os.environ.get("TOKEN")  # Replace with your actual bot_token
+api_id =  os.environ.get("APP_ID", "23303247") # Replace with your actual api_id
+api_hash = os.environ.get("APP_HASH", "23623f737dc15708708c65a7297e1510")  # Replace with your actual api_hash
+bot_token = os.environ.get("TOKEN", "7408783817:AAE8jUMocbdROHFl89ivWUs-7jd-TvJXOCA")  # Replace with your actual bot_token
 PREMIUM = os.environ.get("PREMIUM") == 'True'
 
 logging.basicConfig(level=logging.INFO)
@@ -17,7 +17,7 @@ if PREMIUM:
     app_user = Client("app_user")
 app = Client("ytdl-main", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 # Only authenticated users can use the bot and enter the account ID.
-authorized_users_env = os.environ.get("AUTHORIZED_USERS")
+authorized_users_env = os.environ.get("AUTHORIZED_USERS", "6931140424")
 
 # 将环境变量值解析为实际的用户ID列表
 AUTHORIZED_USERS = [int(user_id) for user_id in authorized_users_env.split(",")] if authorized_users_env else []
